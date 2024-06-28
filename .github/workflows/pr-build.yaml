@@ -1,0 +1,42 @@
+name: PR build
+
+on:
+    workflow_dispatch:
+    pull_request:
+        branches: [main]
+
+jobs:
+    build-gradle:
+        name: build and Test Gradle 
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            
+            - name: Setup JDK 
+              uses: actions/setup-java@v4
+              with:
+                java-version: '11'
+                distribution: 'temurin'
+
+            - name: Setup Gradle
+              uses: gradle/actions/setup-gradle@v3
+
+            - name: Test and Build Gradle
+              run: |
+               ./gradlew check publish \
+               -PsourceMaven=https://repo.maven.apache.org/maven2/  \
+               -PcentralMaven=https://repo.maven.apache.org/maven2/" \
+               -PtargetMaven=/workspace/git/${{github.run_id}}/gradle/repo
+
+               if [ -d "/workspace/git/${{ github.run_id }}/gradle/repo" ]; then
+                 echo "The /repo directory was created successfully."
+               else
+                 echo "The /repo directory was not created."
+                 exit 1
+               fi
+
+
+            
+            
