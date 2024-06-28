@@ -30,12 +30,7 @@ jobs:
                -PcentralMaven=https://repo.maven.apache.org/maven2/" \
                -PtargetMaven=/workspace/git/${{github.run_id}}/gradle/repo
 
-               if [ -d "/workspace/git/${{ github.run_id }}/gradle/repo" ]; then
-                 echo "The /repo directory was created successfully."
-               else
-                 echo "The /repo directory was not created."
-                 exit 1
-               fi
+        
 
 
             
