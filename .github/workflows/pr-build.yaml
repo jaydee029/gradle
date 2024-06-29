@@ -30,7 +30,7 @@ jobs:
                gradle check publish \
                -PsourceMaven=https://repo.maven.apache.org/maven2/  \
                -PcentralMaven=https://repo.maven.apache.org/maven2/ \
-               -PtargetMaven=/workspace/git/${{github.run_id}}/gradle/repo
+               -PtargetMaven=file:${{github.workspace}}/repo
 
         
 
