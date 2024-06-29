@@ -27,7 +27,7 @@ allprojects {
     repositories {
         mavenLocal()
         maven {
-            url "https://development.galasa.dev/main/maven-repo/wrapping/"
+            url "https://maven.pkg.github.com/jaydee029/wrapping/"
         }
         gradlePluginPortal()
         mavenCentral()
