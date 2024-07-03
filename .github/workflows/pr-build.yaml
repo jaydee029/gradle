@@ -31,7 +31,6 @@ jobs:
                -PsourceMaven=https://repo.maven.apache.org/maven2/  \
                -PcentralMaven=https://repo.maven.apache.org/maven2/ \
                -PtargetMaven=https://maven.pkg.github.com/jaydee029/gradle/
-               -PisMainOrRelease= flase
 
 
         
