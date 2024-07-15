@@ -32,7 +32,7 @@ jobs:
                 gradle-version: 6.9.2
             
             - name: Delete previous versions
-              uses: actions/delete-package-versions@v5s
+              uses: actions/delete-package-versions@v5
               with:
                package-name: 'dev.galasa.${{matrix.name}}'
                package-type: 'mvn'
