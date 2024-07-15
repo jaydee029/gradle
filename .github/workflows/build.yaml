@@ -12,6 +12,9 @@ jobs:
     build-gradle:
         name: build and Test Gradle 
         runs-on: ubuntu-latest
+        strategy:
+          matrix: 
+            name: [galasa-gradle-parent, githash.dev.galasa.githash.gradle.plugin,obr.dev.galasa.obr.gradle.plugin,tests.dev.galasa.tests.gradle.plugin,dev.galasa.gradle.impl,testcatalog.dev.galasa.testcatalog.gradle.plugin,dev.galasa.plugin.common,dev.galasa.plugin.common.impl,dev.galasa.plugin.common.test]
 
         steps:
             - name: Checkout Code
@@ -27,6 +30,12 @@ jobs:
               uses: gradle/actions/setup-gradle@v3
               with:
                 gradle-version: 6.9.2
+            
+            - name: Delete previous versions
+              uses: actions/delete-package-versions@v5s
+              with:
+               package-name: 'dev.galasa.${{matrix.name}}'
+               package-type: 'mvn'
   
             - name: Test and Build Gradle
               env:
