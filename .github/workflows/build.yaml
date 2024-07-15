@@ -8,6 +8,7 @@ on:
 env:
   NAMESPACE: jaydee029
 
+
 jobs:
     build-gradle:
         name: build and Test Gradle 
@@ -35,7 +36,7 @@ jobs:
               uses: actions/delete-package-versions@v5
               with:
                package-name: 'dev.galasa.${{matrix.name}}'
-               package-type: 'mvn'
+               package-type: 'maven'
   
             - name: Test and Build Gradle
               env:
